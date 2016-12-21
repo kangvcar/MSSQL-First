@@ -1,4 +1,4 @@
---´´½¨Êı¾İ¿âstudent
+--åˆ›å»ºæ•°æ®åº“student
 CREATE DATABASE student
 ON ( NAME = st_data,
 	FILENAME = 'd:\sqldb\data\st_data.mdf',
@@ -12,7 +12,7 @@ LOG ON ( NAME = st_log,
 	FILEGROWTH = 1MB)
 GO
 
---´´½¨Êı¾İ¿âdb2,Ê¹µÃdb2_n2¼ÓÈëÎÄ¼ş×éfilegroup1
+--åˆ›å»ºæ•°æ®åº“db2,ä½¿å¾—db2_n2åŠ å…¥æ–‡ä»¶ç»„filegroup1
 CREATE DATABASE db2
 ON PRIMARY
 ( NAME = db2_data,
@@ -40,30 +40,30 @@ LOG ON
 GO
 
 
---ÉèÖÃµ±Ç°Êı¾İ¿â
+--è®¾ç½®å½“å‰æ•°æ®åº“
 USE db2
 
---²é¿´Êı¾İ¿â¶¨ÒåĞÅÏ¢
+--æŸ¥çœ‹æ•°æ®åº“å®šä¹‰ä¿¡æ¯
 EXEC sp_helpdb db2
 
---²é¿´Êı¾İ¿â¿Õ¼äÊ¹ÓÃÇé¿ö£¨sp_spaceusedºóÃæ²»Ö¸¶¨Öµ£©
+--æŸ¥çœ‹æ•°æ®åº“ç©ºé—´ä½¿ç”¨æƒ…å†µï¼ˆsp_spaceusedåé¢ä¸æŒ‡å®šå€¼ï¼‰
 EXEC sp_spaceused 
---²é¿´Ö¸¶¨±íµÄ¿Õ¼äÊ¹ÓÃÇé¿ö£¨sp_spaceusedºóÃæÖ¸¶¨±íÃû£©
+--æŸ¥çœ‹æŒ‡å®šè¡¨çš„ç©ºé—´ä½¿ç”¨æƒ…å†µï¼ˆsp_spaceusedåé¢æŒ‡å®šè¡¨åï¼‰
 USE adventureworks
 EXEC sp_spaceused 'Person.Address'
---²é¿´Ö¸¶¨ÊÓÍ¼µÄ¿Õ¼äÊ¹ÓÃÇé¿ö£¨sp_spaceusedºóÃæÖ¸¶¨ÊÓÍ¼Ãû£©
+--æŸ¥çœ‹æŒ‡å®šè§†å›¾çš„ç©ºé—´ä½¿ç”¨æƒ…å†µï¼ˆsp_spaceusedåé¢æŒ‡å®šè§†å›¾åï¼‰
 EXEC sp_spaceused 'HumanResources.vEmployee'
 
 
---À©³äÎÄ¼ş´óĞ¡
---ĞŞ¸ÄÊı¾İ¿âdb2£¬À©³ä´ËÊı¾İÎÄ¼şdb2_n1µÄÈİÁ¿Îª5MB
+--æ‰©å……æ–‡ä»¶å¤§å°
+--ä¿®æ”¹æ•°æ®åº“db2ï¼Œæ‰©å……æ­¤æ•°æ®æ–‡ä»¶db2_n1çš„å®¹é‡ä¸º5MB
 ALTER DATABASE db2
 MODIFY FILE
 ( NAME = db2_n1,
   SIZE = 5MB)
 GO
 
---ĞŞ¸ÄÊı¾İ¿âdb2£¬Ôö¼ÓÒ»¸ö´ÎÊı¾İÎÄ¼şdb2_n3£¬²¢½«¸ÃÎÄ¼şÌí¼Óµ½Ò»¸öĞÂµÄÎÄ¼ş×éfilegroup2ÖĞ
+--ä¿®æ”¹æ•°æ®åº“db2ï¼Œå¢åŠ ä¸€ä¸ªæ¬¡æ•°æ®æ–‡ä»¶db2_n3ï¼Œå¹¶å°†è¯¥æ–‡ä»¶æ·»åŠ åˆ°ä¸€ä¸ªæ–°çš„æ–‡ä»¶ç»„filegroup2ä¸­
 ALTER DATABASE db2
 ADD FILEGROUP filegroup2
 GO
@@ -77,11 +77,11 @@ ADD FILE
 TO FILEGROUP filegroup2
 GO
 
---ĞŞ¸ÄÊı¾İ¿âdb2£¬½«ÆäÊı¾İ¿âÃû³ÆĞŞ¸ÄÎªnew_db2
-/*Ê¹ÓÃSET SINGLE_USERÖ÷ÒªÊÇ·ÀÖ¹»¹ÓĞÆäËü³ÌĞò»òÓÃ»§Á¬½ÓÊı¾İ¿â£¬
-Äã±ØĞëÈ·±£Ã»ÓĞÈÎºÎÓÃ»§ÕıÔÚÊ¹ÓÃÊı¾İ¿â. ¿ÉÒÔÍ¨¹ı½«Êı¾İ¿âÉèÖÃÎªµ¥ÓÃ»§Ä£Ê½¡£
-Ò²¿ÉÒÔÔÚÊı¾İ¿âÊôĞÔ¡ª¡ª¡·¡°Ñ¡Ïî¡±Ñ¡ÔñÀïÃæÕÒµ½¡°ÏŞÖÆ·ÃÎÊ¡±Ñ¡Ïî£¬Ñ¡ÔñSINGLE_USERÑ¡Ïî¡£
-È»ºóÖ´ĞĞMODIFY NAME = new_db2 Óï¾ä£¬¼´¿ÉĞŞ¸ÄÊı¾İ¿âÃû³Æ¡£*/
+--ä¿®æ”¹æ•°æ®åº“db2ï¼Œå°†å…¶æ•°æ®åº“åç§°ä¿®æ”¹ä¸ºnew_db2
+/*ä½¿ç”¨SET SINGLE_USERä¸»è¦æ˜¯é˜²æ­¢è¿˜æœ‰å…¶å®ƒç¨‹åºæˆ–ç”¨æˆ·è¿æ¥æ•°æ®åº“ï¼Œ
+ä½ å¿…é¡»ç¡®ä¿æ²¡æœ‰ä»»ä½•ç”¨æˆ·æ­£åœ¨ä½¿ç”¨æ•°æ®åº“. å¯ä»¥é€šè¿‡å°†æ•°æ®åº“è®¾ç½®ä¸ºå•ç”¨æˆ·æ¨¡å¼ã€‚
+ä¹Ÿå¯ä»¥åœ¨æ•°æ®åº“å±æ€§â€”â€”ã€‹â€œé€‰é¡¹â€é€‰æ‹©é‡Œé¢æ‰¾åˆ°â€œé™åˆ¶è®¿é—®â€é€‰é¡¹ï¼Œé€‰æ‹©SINGLE_USERé€‰é¡¹ã€‚
+ç„¶åæ‰§è¡ŒMODIFY NAME = new_db2 è¯­å¥ï¼Œå³å¯ä¿®æ”¹æ•°æ®åº“åç§°ã€‚*/
 ALTER DATABASE db2
 	SET SINGLE_USER
 GO
@@ -92,28 +92,28 @@ ALTER DATABASE new_db2
 	SET MULTI_USER
 GO
 
---ÁíÒ»ÖÖĞŞ¸ÄÊı¾İ¿âÃû³ÆµÄ·½·¨sp_renamedb
+--å¦ä¸€ç§ä¿®æ”¹æ•°æ®åº“åç§°çš„æ–¹æ³•sp_renamedb
 EXEC sp_renamedb 'new_db2','db2' 
 
 
---ÊÕËõÊı¾İ¿ânew_db2£¬Ê¹ÎÄ¼şÓĞ10%µÄ¿ÉÓÃ¿Õ¼ä
+--æ”¶ç¼©æ•°æ®åº“new_db2ï¼Œä½¿æ–‡ä»¶æœ‰10%çš„å¯ç”¨ç©ºé—´
 DBCC SHRINKDATABASE (db2,10)
 GO
 
---É¾³ıÊı¾İ¿âdb1
+--åˆ é™¤æ•°æ®åº“db1
 CREATE DATABASE db1
 GO
 DROP DATABASE db1
 GO
 
 
---´Óµ±Ç°·şÎñÆ÷·ÖÀëÊı¾İ¿ânew_db2
---Èç¹ûµ±Ç°Êı¾İ¿âÎªnew_db2Ôò»á·ÖÀëÊ§°Ü£¬ËùÒÔ·ÖÀëÇ°ÏÈ°Ñµ±Ç°Êı¾İ¿âÉèÎªmaster
+--ä»å½“å‰æœåŠ¡å™¨åˆ†ç¦»æ•°æ®åº“new_db2
+--å¦‚æœå½“å‰æ•°æ®åº“ä¸ºnew_db2åˆ™ä¼šåˆ†ç¦»å¤±è´¥ï¼Œæ‰€ä»¥åˆ†ç¦»å‰å…ˆæŠŠå½“å‰æ•°æ®åº“è®¾ä¸ºmaster
 USE master
 EXEC sp_detach_db 'db2'
 GO
 
---½«Êı¾İ¿ânew_db2¸½¼Óµ½µ±Ç°·şÎñÆ÷ÊµÀı£¬²¢½«Êı¾İ¿âÃüÃûÎªdb2
+--å°†æ•°æ®åº“new_db2é™„åŠ åˆ°å½“å‰æœåŠ¡å™¨å®ä¾‹ï¼Œå¹¶å°†æ•°æ®åº“å‘½åä¸ºdb2
 CREATE DATABASE db2
 	ON
 	( NAME = db2_data,
@@ -122,14 +122,14 @@ CREATE DATABASE db2
 GO
 
 
---´´½¨±ğÃûÊı¾İÀàĞÍname£¬»ùÓÚÏµÍ³Êı¾İÀàĞÍvarchar£¨10£©£¬ÔÊĞí¿ÕÖµ
+--åˆ›å»ºåˆ«åæ•°æ®ç±»å‹nameï¼ŒåŸºäºç³»ç»Ÿæ•°æ®ç±»å‹varcharï¼ˆ10ï¼‰ï¼Œå…è®¸ç©ºå€¼
 USE student
 GO
 CREATE TYPE name
 	FROM varchar(10) NULL
 GO
 
---É¾³ı±ğÃûÊı¾İÀàĞÍtest
+--åˆ é™¤åˆ«åæ•°æ®ç±»å‹test
 CREATE TYPE test
 	FROM char(2) 
 GO
@@ -137,7 +137,7 @@ DROP TYPE test
 GO
 
 
---´´½¨Ñ§Éú±ístudent£¬±í½á¹¹ÈçÍ¼4-9£¬²»°üº¬Ô¼ÊøĞÅÏ¢
+--åˆ›å»ºå­¦ç”Ÿè¡¨studentï¼Œè¡¨ç»“æ„å¦‚å›¾4-9ï¼Œä¸åŒ…å«çº¦æŸä¿¡æ¯
 USE student
 GO
 CREATE TABLE student
@@ -151,7 +151,7 @@ CREATE TABLE student
 	st_clid char(2) NULL)
 GO
 
---´´½¨´øÓĞ±êÊ¶ÁĞ£¬¼ÆËãÁĞµÄ±í£¬±íÃûÎªcompute_table
+--åˆ›å»ºå¸¦æœ‰æ ‡è¯†åˆ—ï¼Œè®¡ç®—åˆ—çš„è¡¨ï¼Œè¡¨åä¸ºcompute_table
 USE student
 GO
 CREATE TABLE compute_table
@@ -164,13 +164,13 @@ CREATE TABLE compute_table
 GO
 
 
---²é¿´±ícompute_tableµÄ½á¹¹
+--æŸ¥çœ‹è¡¨compute_tableçš„ç»“æ„
 USE student
 GO
 EXEC sp_help 'compute_table'
 GO
 
---ĞŞ¸Ä±ístudent£¬Ôö¼ÓÁ½ÁĞst_nation ,st_native
+--ä¿®æ”¹è¡¨studentï¼Œå¢åŠ ä¸¤åˆ—st_nation ,st_native
 USE student
 GO
 ALTER TABLE student
@@ -180,36 +180,36 @@ ALTER TABLE student
 GO
 
 
---ÖØÃüÃû±ícompute_tableµÄÃû³Æ£¬ĞÂµÄÃû³ÆÎªnew_compute
+--é‡å‘½åè¡¨compute_tableçš„åç§°ï¼Œæ–°çš„åç§°ä¸ºnew_compute
 USE student
 GO
 EXEC sp_rename 'compute_table','new_compute'
 GO 
 
 
---É¾³ı±ínew_compute
+--åˆ é™¤è¡¨new_compute
 USE student
 GO
 DROP TABLE new_compute
 GO
 
 
---Ïò±ístudentÖĞ²åÈëÒ»Ìõ¼ÇÂ¼£¬¸Ã¼ÇÂ¼¶ÔÓ¦±íÖĞµÄËùÓĞÁĞ
+--å‘è¡¨studentä¸­æ’å…¥ä¸€æ¡è®°å½•ï¼Œè¯¥è®°å½•å¯¹åº”è¡¨ä¸­çš„æ‰€æœ‰åˆ—
 USE student
 GO
 INSERT INTO student(st_id, st_name, st_birth ,st_gender, st_address, st_tel, st_clid)
-	VALUES('2005010101','Íõ³½','1998-10-10','Å®','±±¾©ÊĞ³¯ÑôÇø','84981234','01')
+	VALUES('2005010101','ç‹è¾°','1998-10-10','å¥³','åŒ—äº¬å¸‚æœé˜³åŒº','84981234','01')
 GO
 
---Ïò±ístudentÖĞ²åÈëÒ»Ìõ¼ÇÂ¼£¬¸Ã¼ÇÂ¼¶ÔÓ¦±íÖĞµÄÏàÓ¦ÁĞ
+--å‘è¡¨studentä¸­æ’å…¥ä¸€æ¡è®°å½•ï¼Œè¯¥è®°å½•å¯¹åº”è¡¨ä¸­çš„ç›¸åº”åˆ—
 USE student
 GO
 INSERT INTO student(st_id, st_name, st_birth ,st_gender, st_clid)
-	VALUES('2005010102','ÕÅÒâ','1989-12-1','ÄĞ','01')
+	VALUES('2005010102','å¼ æ„','1989-12-1','ç”·','01')
 GO
 
 
---²åÈë¶àĞĞ¼ÇÂ¼,¼´°Ñ±ístudentÖĞµÄst_id£¬st_nameÁĞ²åÈëµ½ÁíÒ»¸ö±íkaoping_tableÖĞ
+--æ’å…¥å¤šè¡Œè®°å½•,å³æŠŠè¡¨studentä¸­çš„st_idï¼Œst_nameåˆ—æ’å…¥åˆ°å¦ä¸€ä¸ªè¡¨kaoping_tableä¸­
 USE student
 GO
 CREATE TABLE kaoping_table
@@ -224,7 +224,7 @@ INSERT INTO kaoping_table(id,name)
 GO
 
 
---¸üĞÂ±íÖĞµÄÒ»ĞĞ¼ÇÂ¼
+--æ›´æ–°è¡¨ä¸­çš„ä¸€è¡Œè®°å½•
 USE student
 GO
 UPDATE student
@@ -232,29 +232,29 @@ UPDATE student
 	WHERE st_id = '2005010101'
 GO
 
---¸üĞÂ±íÖĞµÄËùÓĞ¼ÇÂ¼
+--æ›´æ–°è¡¨ä¸­çš„æ‰€æœ‰è®°å½•
 USE student
 GO
 UPDATE student
-	SET st_address = '±±¾©ÊĞº£µíÇø'
+	SET st_address = 'åŒ—äº¬å¸‚æµ·æ·€åŒº'
 GO
 
 
---É¾³ı±íkaoping_tableÖĞµÄËùÓĞ¼ÇÂ¼
+--åˆ é™¤è¡¨kaoping_tableä¸­çš„æ‰€æœ‰è®°å½•
 USE student
 GO
 DELETE FROM kaoping_table
 GO
 
 
---¶ÔÑ§ºÅÁĞst_id¶¨ÒåÖ÷¼üÔ¼Êø
+--å¯¹å­¦å·åˆ—st_idå®šä¹‰ä¸»é”®çº¦æŸ
 USE student
 GO
 ALTER TABLE student
 	ADD CONSTRAINT pk_stid PRIMARY KEY(st_id)
 GO
 
---´´½¨±ídept£¬²¢¶¨ÒåÖ÷¼üÔ¼ÊøºÍÎ©Ò»¼üÔ¼ÊøĞÅÏ¢
+--åˆ›å»ºè¡¨deptï¼Œå¹¶å®šä¹‰ä¸»é”®çº¦æŸå’ŒæƒŸä¸€é”®çº¦æŸä¿¡æ¯
 USE student
 GO
 CREATE TABLE dept
@@ -266,7 +266,7 @@ CREATE TABLE dept
 )
 GO
 
---´´½¨±íclass
+--åˆ›å»ºè¡¨class
 USE student
 GO
 CREATE TABLE class
@@ -278,7 +278,7 @@ CREATE TABLE class
 )
 GO
 
---¶ÔËùÊô°àºÅÁĞst_clid¶¨ÒåÍâ¼üÔ¼Êø
+--å¯¹æ‰€å±ç­å·åˆ—st_clidå®šä¹‰å¤–é”®çº¦æŸ
 USE student
 GO
 ALTER TABLE student
@@ -288,33 +288,33 @@ ALTER TABLE student
 GO
 
 
---¶¨ÒåÖ÷¼üÔ¼ÊøºÍ¼ì²éÔ¼ÊøĞÅÏ¢
+--å®šä¹‰ä¸»é”®çº¦æŸå’Œæ£€æŸ¥çº¦æŸä¿¡æ¯
 USE student
 GO
 CREATE TABLE course
 (
 	cr_id char(6) PRIMARY KEY,
 	cr_name varchar(30) NOT NULL,
-	cr_type char(4) NULL CHECK(cr_type = '¿¼ÊÔ' or cr_type = '¿¼ºË'),
+	cr_type char(4) NULL CHECK(cr_type = 'è€ƒè¯•' or cr_type = 'è€ƒæ ¸'),
 	cr_time int NULL
 )
 GO
 
---¶¨ÒåÖ÷¼üÔ¼Êø¡¢¼ì²éÔ¼ÊøºÍÄ¬ÈÏÔ¼ÊøĞÅÏ¢
+--å®šä¹‰ä¸»é”®çº¦æŸã€æ£€æŸ¥çº¦æŸå’Œé»˜è®¤çº¦æŸä¿¡æ¯
 USE student
 GO
 CREATE TABLE teacher
 (
 	th_id char(6) PRIMARY KEY,
 	th_name varchar(10) NOT NULL,
-	th_gender char(2) NULL CHECK(th_gender = 'ÄĞ' or th_gender = 'Å®'),
+	th_gender char(2) NULL CHECK(th_gender = 'ç”·' or th_gender = 'å¥³'),
 	th_position char(6) NULL,
-	th_type char(4) NULL DEFAULT '×¨Ö°'
+	th_type char(4) NULL DEFAULT 'ä¸“èŒ'
 )
 GO
 
---´´½¨±íscore£¬²»°üº¬Ô¼ÊøĞÅÏ¢£»
---ĞŞ¸Ä±íscore£¬Ìí¼ÓÔ¼ÊøĞÅÏ¢£»
+--åˆ›å»ºè¡¨scoreï¼Œä¸åŒ…å«çº¦æŸä¿¡æ¯ï¼›
+--ä¿®æ”¹è¡¨scoreï¼Œæ·»åŠ çº¦æŸä¿¡æ¯ï¼›
 USE student
 GO
 CREATE TABLE score
@@ -332,7 +332,7 @@ ALTER TABLE score
 GO
 
 
---´´½¨±íschedule,°üº¬Ô¼ÊøĞÅÏ¢
+--åˆ›å»ºè¡¨schedule,åŒ…å«çº¦æŸä¿¡æ¯
 USE student
 GO
 CREATE TABLE schedule
@@ -347,59 +347,59 @@ CREATE TABLE schedule
 GO
 
 
---´´½¨´ÅÅÌ±¸·İÉè±¸£¬Âß¼­Ãû³ÆÎªstudent_backup1
+--åˆ›å»ºç£ç›˜å¤‡ä»½è®¾å¤‡ï¼Œé€»è¾‘åç§°ä¸ºstudent_backup1
 EXEC sp_addumpdevice 'disk','student_backup1','d:\sqlbackup\student_backup1.bak'
 GO
 
 
---¶ÔÊı¾İ¿âstudent½øĞĞÍêÕû±¸·İ£¬½«±¸·İ´æ´¢ÓÚ±¸·İÉè±¸student_backup1ÖĞ
---±¸·İÇ°ÏÈ°Ñ»Ö¸´Ä£Ê½¸ÄÎªÍêÕû
+--å¯¹æ•°æ®åº“studentè¿›è¡Œå®Œæ•´å¤‡ä»½ï¼Œå°†å¤‡ä»½å­˜å‚¨äºå¤‡ä»½è®¾å¤‡student_backup1ä¸­
+--å¤‡ä»½å‰å…ˆæŠŠæ¢å¤æ¨¡å¼æ”¹ä¸ºå®Œæ•´
 USE student
 GO
 BACKUP DATABASE student TO student_backup1
-WITH  NAME = 'studentÍêÕû±¸·İ'
+WITH  NAME = 'studentå®Œæ•´å¤‡ä»½'
 GO
 
 
---´´½¨´ÅÅÌ±¸·İÉè±¸£¬Âß¼­Ãû³ÆÎªstlog_backup1
+--åˆ›å»ºç£ç›˜å¤‡ä»½è®¾å¤‡ï¼Œé€»è¾‘åç§°ä¸ºstlog_backup1
 EXEC sp_addumpdevice 'disk','stlog_backup1','d:\sqlbackup\stlog_backup1.bak'
 GO
 
---²é¿´ËùÓĞ±¸·İÉè±¸
+--æŸ¥çœ‹æ‰€æœ‰å¤‡ä»½è®¾å¤‡
 SELECT * FROM sys.backup_devices
 GO
 
 
---Ïò±ístudentÖĞ²åÈëÈıÌõ¼ÇÂ¼£»
---¶Ô±ístudent½øĞĞ²îÒì±¸·İ£¬½«±¸·İ´æ´¢ÓÚ±¸·İÉè±¸student_backup1ÖĞ£¬²¢½«±¾´Î±¸·İ×·¼Óµ½½éÖÊµÄÏÖÓĞÊı¾İÖ®ºó
+--å‘è¡¨studentä¸­æ’å…¥ä¸‰æ¡è®°å½•ï¼›
+--å¯¹è¡¨studentè¿›è¡Œå·®å¼‚å¤‡ä»½ï¼Œå°†å¤‡ä»½å­˜å‚¨äºå¤‡ä»½è®¾å¤‡student_backup1ä¸­ï¼Œå¹¶å°†æœ¬æ¬¡å¤‡ä»½è¿½åŠ åˆ°ä»‹è´¨çš„ç°æœ‰æ•°æ®ä¹‹å
 USE student
 GO
 INSERT INTO student(st_id, st_name, st_birth, st_gender, st_address, st_tel, st_clid)
-VALUES('2005010202','ÀîÁù','1989-12-9','ÄĞ','±±¾©ÊĞ¶«³ÇÇø','13112222678','01')
+VALUES('2005010202','æå…­','1989-12-9','ç”·','åŒ—äº¬å¸‚ä¸œåŸåŒº','13112222678','01')
 GO
 BACKUP DATABASE student TO student_backup1
-WITH DIFFERENTIAL, NAME = 'student²îÒì±¸·İ'
+WITH DIFFERENTIAL, NAME = 'studentå·®å¼‚å¤‡ä»½'
 GO
 
 
---Ö´ĞĞÊÂÎñÈÕÖ¾±¸·İ
+--æ‰§è¡Œäº‹åŠ¡æ—¥å¿—å¤‡ä»½
 BACKUP LOG student TO stlog_backup1
-WITH NAME='studentÊÂÎñÈÕÖ¾±¸·İ'
+WITH NAME='studentäº‹åŠ¡æ—¥å¿—å¤‡ä»½'
 GO
 
 
---»¹Ô­Êı¾İ¿â
---1)»¹Ô­ÍêÕû±¸·İ
+--è¿˜åŸæ•°æ®åº“
+--1)è¿˜åŸå®Œæ•´å¤‡ä»½
 RESTORE DATABASE student
 	FROM student_backup1
 	WITH FILE=1,NORECOVERY,REPLACE
 GO
---2)»¹Ô­²îÒì±¸·İ
+--2)è¿˜åŸå·®å¼‚å¤‡ä»½
 RESTORE DATABASE student
 	FROM student_backup1
 	WITH FILE=2,NORECOVERY
 GO
---3)»¹Ô­ÊÂÎñÈÕÖ¾±¸·İ
+--3)è¿˜åŸäº‹åŠ¡æ—¥å¿—å¤‡ä»½
 RESTORE DATABASE student
 	FROM stlog_backup1
 	WITH FILE=1,RECOVERY,REPLACE
@@ -407,53 +407,53 @@ GO
 
 
 
---ÉùÃ÷Á½¸ö¾Ö²¿±äÁ¿£¬¸³Öµ²¢ÏÔÊ¾ĞÅÏ¢
+--å£°æ˜ä¸¤ä¸ªå±€éƒ¨å˜é‡ï¼Œèµ‹å€¼å¹¶æ˜¾ç¤ºä¿¡æ¯
 USE student
 GO
 DECLARE @num int,@gender char(2)
-SET @gender='ÄĞ'
+SET @gender='ç”·'
 SELECT @num=count(*) FROM student WHERE st_gender=@gender
-PRINT 'ĞÔ±ğ' + @gender + 'µÄÈËÊıÊÇ£º' + convert(char(4),@num)
+PRINT 'æ€§åˆ«' + @gender + 'çš„äººæ•°æ˜¯ï¼š' + convert(char(4),@num)
 GO
 
 
---ÏÔÊ¾È«¾Ö±äÁ¿@@CONNECTIONS µÄÖµ
-SELECT @@CONNECTIONS AS 'Á¬½Ó´ÎÊı'
+--æ˜¾ç¤ºå…¨å±€å˜é‡@@CONNECTIONS çš„å€¼
+SELECT @@CONNECTIONS AS 'è¿æ¥æ¬¡æ•°'
 GO
 
 
---Ê¹ÓÃCEILING(),FLOOR(),ROUND(),RAND()º¯Êı£¬²¢ÏÔÊ¾·µ»ØÖµ
-SELECT ceiling(12.345) AS ×îĞ¡ÕûÊı, floor(12.345) AS ×î´óÕûÊı, round(12.345,2) AS ½üËÆÕûÊı, rand() AS Ëæ»úÊı
+--ä½¿ç”¨CEILING(),FLOOR(),ROUND(),RAND()å‡½æ•°ï¼Œå¹¶æ˜¾ç¤ºè¿”å›å€¼
+SELECT ceiling(12.345) AS æœ€å°æ•´æ•°, floor(12.345) AS æœ€å¤§æ•´æ•°, round(12.345,2) AS è¿‘ä¼¼æ•´æ•°, rand() AS éšæœºæ•°
 GO
 
---µ÷ÓÃSUBSTRING(),STUFF(),LEN(),REVERSE()º¯Êı£¬²¢ÏÔÊ¾·µ»ØÖµ
-SELECT substring('abcdef',2,2) AS ×Ó×Ö·û´®, stuff('abcdef',2,2,'123') AS Ìæ»»×Ö·û´®, 
-len('abcdef') AS ×Ö·û´®³¤¶È, reverse('abcdef') AS ·´Ïò×Ö·û´®
+--è°ƒç”¨SUBSTRING(),STUFF(),LEN(),REVERSE()å‡½æ•°ï¼Œå¹¶æ˜¾ç¤ºè¿”å›å€¼
+SELECT substring('abcdef',2,2) AS å­å­—ç¬¦ä¸², stuff('abcdef',2,2,'123') AS æ›¿æ¢å­—ç¬¦ä¸², 
+len('abcdef') AS å­—ç¬¦ä¸²é•¿åº¦, reverse('abcdef') AS åå‘å­—ç¬¦ä¸²
 GO
 
---µ÷ÓÃGETDATE(),DATEADD(),DATEDIFF(),DATENAME(),DATEPART()º¯Êı£¬²¢ÏÔÊ¾·µ»ØÖµ
-SELECT getdate() AS ÏµÍ³ÈÕÆÚ, dateadd(dd,10,getdate()) AS ºóÊ®ÈÕÈÕÆÚ,
-datediff(dd,'2009-1-1',getdate()) AS Ïà²îÌìÊı,
-datename(weekday,getdate()) AS ĞÇÆÚ, datepart(yy,getdate()) AS ÏµÍ³Äê·İ
+--è°ƒç”¨GETDATE(),DATEADD(),DATEDIFF(),DATENAME(),DATEPART()å‡½æ•°ï¼Œå¹¶æ˜¾ç¤ºè¿”å›å€¼
+SELECT getdate() AS ç³»ç»Ÿæ—¥æœŸ, dateadd(dd,10,getdate()) AS ååæ—¥æ—¥æœŸ,
+datediff(dd,'2009-1-1',getdate()) AS ç›¸å·®å¤©æ•°,
+datename(weekday,getdate()) AS æ˜ŸæœŸ, datepart(yy,getdate()) AS ç³»ç»Ÿå¹´ä»½
 GO
 
---µ÷ÓÃCAST(),CONVERT()º¯Êı£¬²¢ÏÔÊ¾·µ»ØÖµ
-SELECT cast(getdate() AS varchar(30)) AS ÈÕÆÚÊ±¼ä, convert(varchar(30),getdate(),120) AS ÈÕÆÚÊ±¼ä,
-convert(varchar(30),getdate(),108) AS Ê±¼ä, convert(varchar(30),getdate(),111) AS ÈÕÆÚ
-GO
-
-
---µ÷ÓÃDB_ID(),CURRENT_USER(),ISDATE(),ISNULL()º¯Êı£¬²¢ÏÔÊ¾·µ»ØÖµ
-SELECT db_id('studnet') AS Êı¾İ¿âID,current_user AS Êı¾İ¿âÓÃ»§, isdate(getdate()) AS ÈÕÆÚÅĞ¶Ï,
- isnull(NULL,'IS NULL') AS ¿ÕÖµÅĞ¶Ï
+--è°ƒç”¨CAST(),CONVERT()å‡½æ•°ï¼Œå¹¶æ˜¾ç¤ºè¿”å›å€¼
+SELECT cast(getdate() AS varchar(30)) AS æ—¥æœŸæ—¶é—´, convert(varchar(30),getdate(),120) AS æ—¥æœŸæ—¶é—´,
+convert(varchar(30),getdate(),108) AS æ—¶é—´, convert(varchar(30),getdate(),111) AS æ—¥æœŸ
 GO
 
 
---ÓÃ»§¶¨Òåº¯Êı
---´´½¨Ò»¸ö±êÁ¿º¯Êıfunc_age,ÊäÈë³öÉúÈÕÆÚ£¬·µ»ØÄêÁäÖµ£»µ÷ÓÃº¯Êıfunc_age£¬ÏÔÊ¾·µ»ØÖµ
+--è°ƒç”¨DB_ID(),CURRENT_USER(),ISDATE(),ISNULL()å‡½æ•°ï¼Œå¹¶æ˜¾ç¤ºè¿”å›å€¼
+SELECT db_id('studnet') AS æ•°æ®åº“ID,current_user AS æ•°æ®åº“ç”¨æˆ·, isdate(getdate()) AS æ—¥æœŸåˆ¤æ–­,
+ isnull(NULL,'IS NULL') AS ç©ºå€¼åˆ¤æ–­
+GO
+
+
+--ç”¨æˆ·å®šä¹‰å‡½æ•°
+--åˆ›å»ºä¸€ä¸ªæ ‡é‡å‡½æ•°func_age,è¾“å…¥å‡ºç”Ÿæ—¥æœŸï¼Œè¿”å›å¹´é¾„å€¼ï¼›è°ƒç”¨å‡½æ•°func_ageï¼Œæ˜¾ç¤ºè¿”å›å€¼
 USE student
 GO
---1)´´½¨±êÁ¿º¯Êı
+--1)åˆ›å»ºæ ‡é‡å‡½æ•°
 CREATE FUNCTION func_age
 	(@var_birth datetime)
 	RETURNS int
@@ -462,15 +462,15 @@ AS
 		RETURN datediff(yy,@var_birth,getdate())
 	END
 GO
---2)Ê¹ÓÃ±êÁ¿º¯Êı
-SELECT dbo.func_age('1997-1-10') AS 'ÄêÁä'
+--2)ä½¿ç”¨æ ‡é‡å‡½æ•°
+SELECT dbo.func_age('1997-1-10') AS 'å¹´é¾„'
 GO
 
 
 
---ÅĞ¶ÏÒ»¸öÕûĞÍ±äÁ¿µÄÖµ¡£
---Èç¹ûÎª¿Õ£¬ÏÔÊ¾¡®value is null¡¯£»
---·ñÔò£¬ÏÔÊ¾¸Ã±äÁ¿µÄÖµ
+--åˆ¤æ–­ä¸€ä¸ªæ•´å‹å˜é‡çš„å€¼ã€‚
+--å¦‚æœä¸ºç©ºï¼Œæ˜¾ç¤ºâ€˜value is nullâ€™ï¼›
+--å¦åˆ™ï¼Œæ˜¾ç¤ºè¯¥å˜é‡çš„å€¼
 DECLARE @var_a int
 IF @var_a is null
 	PRINT 'value is null'
@@ -479,7 +479,7 @@ ELSE
 GO
 
 
---¼ÆËã²¢1+2+3+4+¡¤¡¤¡¤¡¤¡¤¡¤+100µÄÖµ
+--è®¡ç®—å¹¶1+2+3+4+Â·Â·Â·Â·Â·Â·+100çš„å€¼
 DECLARE @i int, @sum int
 SET @i=1
 SET @sum=0
@@ -488,98 +488,98 @@ WHILE @i<=100
 		SET @sum=@sum+@i
 		SET @i=@i+1
 	END
-PRINT '1+2+3+4+¡¤¡¤¡¤¡¤¡¤¡¤+100µÄ½á¹ûÎª£º'+ CONVERT(varchar(6),@sum)
+PRINT '1+2+3+4+Â·Â·Â·Â·Â·Â·+100çš„ç»“æœä¸ºï¼š'+ CONVERT(varchar(6),@sum)
 GO
 
 
---¼ìË÷±ístudent£¬²éÑ¯ËùÓĞÑ§ÉúµÄÑ§ºÅºÍĞÕÃû
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢æ‰€æœ‰å­¦ç”Ÿçš„å­¦å·å’Œå§“å
 USE student
 GO
 SELECT st_id,st_name FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯ËùÓĞÑ§ÉúµÄÑ§ºÅºÍĞÕÃûºÍµç»°£¬²¢¼ÓÈë³£Á¿ÁĞ
---³£Á¿ÁĞ¡°please call¡±
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢æ‰€æœ‰å­¦ç”Ÿçš„å­¦å·å’Œå§“åå’Œç”µè¯ï¼Œå¹¶åŠ å…¥å¸¸é‡åˆ—
+--å¸¸é‡åˆ—â€œplease callâ€
 USE student
 GO
 SELECT st_id,st_name,'please call:',st_tel FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯ËùÓĞÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢æ‰€æœ‰å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
 --*
 USE student
 GO
 SELECT * FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯ËùÓĞÑ§ÉúµÄÑ§ºÅºÍĞÕÃûºÍÄêÁä£¬²¢ÓÃÖĞÎÄÖ¸¶¨¸÷ÁĞÃû
---ÈıÖÖĞÎÊ½ÈçÏÂ£º
---ÁĞÃû AS ±ğÃû
---ÁĞÃû ±ğÃû
---±ğÃû = ÁĞÃ÷
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢æ‰€æœ‰å­¦ç”Ÿçš„å­¦å·å’Œå§“åå’Œå¹´é¾„ï¼Œå¹¶ç”¨ä¸­æ–‡æŒ‡å®šå„åˆ—å
+--ä¸‰ç§å½¢å¼å¦‚ä¸‹ï¼š
+--åˆ—å AS åˆ«å
+--åˆ—å åˆ«å
+--åˆ«å = åˆ—æ˜
 USE student
 GO
-SELECT st_id AS Ñ§ºÅ,st_name ĞÕÃû,ÄêÁä = dbo.func_age(st_birth) FROM student
+SELECT st_id AS å­¦å·,st_name å§“å,å¹´é¾„ = dbo.func_age(st_birth) FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯ËùÓĞÑ§ÉúËùÊôµÄÏµºÅ
---DISTINCTÏû³ıÖØ¸´ĞĞ
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢æ‰€æœ‰å­¦ç”Ÿæ‰€å±çš„ç³»å·
+--DISTINCTæ¶ˆé™¤é‡å¤è¡Œ
 USE student
 GO
---1)½á¹û¼¯°üº¬ÖØ¸´ĞĞ
-SELECT substring(st_id,5,2) AS ÏµºÅ FROM student
+--1)ç»“æœé›†åŒ…å«é‡å¤è¡Œ
+SELECT substring(st_id,5,2) AS ç³»å· FROM student
 GO
---2)½á¹û¼¯Ïû³ıÖØ¸´ĞĞ
-SELECT DISTINCT substring(st_id,5,2) AS ÏµºÅ FROM student
+--2)ç»“æœé›†æ¶ˆé™¤é‡å¤è¡Œ
+SELECT DISTINCT substring(st_id,5,2) AS ç³»å· FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯Ç°Á½ÃûÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢å‰ä¸¤åå­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
 --TOP
 USE student
 GO
 SELECT TOP 2 * FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯Ç°50%Ñ§ÉúµÄÏêÏ¸ĞÅÏ¢
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢å‰50%å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
 -- PERCENT
 USE student
 GO
 SELECT TOP 50 PERCENT * FROM student
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯ÄĞÉúµÄÏêÏ¸ĞÅÏ¢
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢ç”·ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
 --WHERE
 USE student
 GO
 SELECT * FROM student
-	WHERE st_gender='ÄĞ'
+	WHERE st_gender='ç”·'
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯1989Äê³öÉúµÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---·½·¨1
---BETWEEN¡¤¡¤¡¤AND¡¤¡¤¡¤(·¶Î§)
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢1989å¹´å‡ºç”Ÿçš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--æ–¹æ³•1
+--BETWEENÂ·Â·Â·ANDÂ·Â·Â·(èŒƒå›´)
 USE student
 GO
 SELECT * FROM student
 	WHERE st_birth BETWEEN '1989-1-1' AND '1989-12-31'
 GO
---·½·¨2
---AND(Âß¼­ÔËËã)
+--æ–¹æ³•2
+--AND(é€»è¾‘è¿ç®—)
 SELECT * FROM student
 	WHERE st_birth >= '1989-1-1' AND st_birth <='1989-12-31'
 GO
 
 
---¼ìË÷±ístudent£¬²éÑ¯01,02,03°àÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---·½·¨1
---IN(ÁĞ±í)
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢01,02,03ç­å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--æ–¹æ³•1
+--IN(åˆ—è¡¨)
 USE student
 GO
 SELECT * FROM student
 	WHERE st_clid IN ('01','02','03')
 GO
---·½·¨2
---OR(Âß¼­ÔËËã)
+--æ–¹æ³•2
+--OR(é€»è¾‘è¿ç®—)
 USE student
 GO
 SELECT * FROM student
@@ -588,40 +588,40 @@ GO
 
 
 
---¼ìË÷±ístudent£¬²éÑ¯ĞÕÍõµÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---LIKE(Æ¥ÅäÄ£Ê½)
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢å§“ç‹çš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--LIKE(åŒ¹é…æ¨¡å¼)
 USE student
 GO
 SELECT * FROM student
-	WHERE st_name LIKE 'Íõ%'
+	WHERE st_name LIKE 'ç‹%'
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯2005~2008ÄêÈëÑ§µÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---LIKE(Æ¥ÅäÄ£Ê½)
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢2005~2008å¹´å…¥å­¦çš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--LIKE(åŒ¹é…æ¨¡å¼)
 USE student
 GO
 SELECT * FROM student
 	WHERE substring(st_id,1,4) LIKE '200[5-8]'
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯µç»°ÖĞº¬ÓĞÏÂ»®Ïß_µÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---ESCAPE(×ªÒå) ,½«aºóÃæµÄ×Ö·û×ªÒå
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢ç”µè¯ä¸­å«æœ‰ä¸‹åˆ’çº¿_çš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--ESCAPE(è½¬ä¹‰) ,å°†aåé¢çš„å­—ç¬¦è½¬ä¹‰
 USE student
 GO
 SELECT * FROM student
 	WHERE st_tel LIKE '%a_%' ESCAPE 'a'
 GO
 
---¼ìË÷±ístudent£¬²éÑ¯¼ÒÍ¥µØÖ·Îª¿ÕµÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---IS NULL(ÅĞ¶Ï·Ç¿Õ)
+--æ£€ç´¢è¡¨studentï¼ŒæŸ¥è¯¢å®¶åº­åœ°å€ä¸ºç©ºçš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--IS NULL(åˆ¤æ–­éç©º)
 USE student
 GO
 SELECT * FROM student
 	WHERE st_address IS NULL
 GO
 
---¼ìË÷±íscore£¬²éÑ¯Ñ¡ĞŞÁË¿Î³ÌºÅÎª'c01001'µÄÑ§ÉúµÄÑ§ºÅ¼°³É¼¨£¬²¢°²×°³É¼¨½µĞòÅÅĞòÏÔÊ¾Ç°ÈıĞĞ¼ÇÂ¼
---ORDER BY(ÅÅĞò) ºÍ DESC(½µĞò)
+--æ£€ç´¢è¡¨scoreï¼ŒæŸ¥è¯¢é€‰ä¿®äº†è¯¾ç¨‹å·ä¸º'c01001'çš„å­¦ç”Ÿçš„å­¦å·åŠæˆç»©ï¼Œå¹¶å®‰è£…æˆç»©é™åºæ’åºæ˜¾ç¤ºå‰ä¸‰è¡Œè®°å½•
+--ORDER BY(æ’åº) å’Œ DESC(é™åº)
 USE student
 GO
 SELECT TOP 3 sc_stid,sc_grade FROM score
@@ -629,48 +629,48 @@ SELECT TOP 3 sc_stid,sc_grade FROM score
 	ORDER BY sc_grade DESC
 GO
 
---¼ìË÷±íscore£¬²éÑ¯¼ÇÂ¼Êı
---COUNT() (Ò»ÁĞÖĞµÄ×ÜĞĞÊı)
+--æ£€ç´¢è¡¨scoreï¼ŒæŸ¥è¯¢è®°å½•æ•°
+--COUNT() (ä¸€åˆ—ä¸­çš„æ€»è¡Œæ•°)
 USE student
 GO
-SELECT COUNT(*) AS ¼ÇÂ¼Êı FROM student
+SELECT COUNT(*) AS è®°å½•æ•° FROM student
 GO
 
---¼ìË÷±íscore£¬²éÑ¯Ñ¡ĞŞÁË¿Î³ÌºÅ'c01001'µÄÑ§ÉúÈËÊı£¬×Ü³É¼¨£¬Æ½¾ù³É¼¨£¬×î¸ß³É¼¨ºÍ×îµÍ³É¼¨
---SUM()(Ò»ÁĞÖĞÖµµÄ×ÜºÍ),AVG()(Ò»ÁĞÖĞµÄÆ½¾ùÖµ),MAX()(Ò»ÁĞÖĞµÄ×î´óÖµ),MIN()(Ò»ÁĞÖĞµÄ×îĞ¡Öµ)
+--æ£€ç´¢è¡¨scoreï¼ŒæŸ¥è¯¢é€‰ä¿®äº†è¯¾ç¨‹å·'c01001'çš„å­¦ç”Ÿäººæ•°ï¼Œæ€»æˆç»©ï¼Œå¹³å‡æˆç»©ï¼Œæœ€é«˜æˆç»©å’Œæœ€ä½æˆç»©
+--SUM()(ä¸€åˆ—ä¸­å€¼çš„æ€»å’Œ),AVG()(ä¸€åˆ—ä¸­çš„å¹³å‡å€¼),MAX()(ä¸€åˆ—ä¸­çš„æœ€å¤§å€¼),MIN()(ä¸€åˆ—ä¸­çš„æœ€å°å€¼)
 USE student
 GO
-SELECT COUNT(sc_stid) AS Ñ§ÉúÈËÊı, SUM(sc_grade) AS ×Ü³É¼¨, AVG(sc_grade) AS Æ½¾ù³É¼¨,
- MAX(sc_grade) AS ×î¸ß³É¼¨, MIN(sc_grade) AS ×îµÍ³É¼¨ FROM score
+SELECT COUNT(sc_stid) AS å­¦ç”Ÿäººæ•°, SUM(sc_grade) AS æ€»æˆç»©, AVG(sc_grade) AS å¹³å‡æˆç»©,
+ MAX(sc_grade) AS æœ€é«˜æˆç»©, MIN(sc_grade) AS æœ€ä½æˆç»© FROM score
 	WHERE sc_crid = 'c01001'
 GO
 
---¼ìË÷±íscore£¬°´¿Î³ÌºÅ½øĞĞ·Ö×é£¬²éÑ¯¸÷ÃÅ¿Î³ÌµÄ¿Î³ÌºÅ¡¢ÉÏ¿ÎÈËÊı¼°Æ½¾ù³É¼¨
---GROUP BY(·Ö×é)
+--æ£€ç´¢è¡¨scoreï¼ŒæŒ‰è¯¾ç¨‹å·è¿›è¡Œåˆ†ç»„ï¼ŒæŸ¥è¯¢å„é—¨è¯¾ç¨‹çš„è¯¾ç¨‹å·ã€ä¸Šè¯¾äººæ•°åŠå¹³å‡æˆç»©
+--GROUP BY(åˆ†ç»„)
 USE student
 GO
-SELECT sc_crid AS ¿Î³ÌºÅ, COUNT(sc_stid) AS ÉÏ¿ÎÈËÊı, AVG(sc_grade)AS Æ½¾ù³É¼¨ FROM score
+SELECT sc_crid AS è¯¾ç¨‹å·, COUNT(sc_stid) AS ä¸Šè¯¾äººæ•°, AVG(sc_grade)AS å¹³å‡æˆç»© FROM score
 	GROUP BY sc_crid
 GO
 
---¼ìË÷±íscore£¬°´¿Î³ÌºÅ½øĞĞ·Ö×é£¬²éÑ¯ÉÏ¿ÎÈËÊı¶àÓÚ2ÈËµÄ¸÷ÃÅ¿Î³ÌµÄ¿Î³ÌºÅ¡¢ÉÏ¿ÎÈËÊı¼°Æ½¾ù³É¼¨
---GROUP BY(·Ö×é) ºÍ HAVING(Ìõ¼ş²éÑ¯)
+--æ£€ç´¢è¡¨scoreï¼ŒæŒ‰è¯¾ç¨‹å·è¿›è¡Œåˆ†ç»„ï¼ŒæŸ¥è¯¢ä¸Šè¯¾äººæ•°å¤šäº2äººçš„å„é—¨è¯¾ç¨‹çš„è¯¾ç¨‹å·ã€ä¸Šè¯¾äººæ•°åŠå¹³å‡æˆç»©
+--GROUP BY(åˆ†ç»„) å’Œ HAVING(æ¡ä»¶æŸ¥è¯¢)
 USE student
 GO
-SELECT sc_crid AS ¿Î³ÌºÅ, COUNT(sc_stid) AS ÉÏ¿ÎÈËÊı, AVG(sc_grade) AS Æ½¾ù³É¼¨ FROM score
+SELECT sc_crid AS è¯¾ç¨‹å·, COUNT(sc_stid) AS ä¸Šè¯¾äººæ•°, AVG(sc_grade) AS å¹³å‡æˆç»© FROM score
 	GROUP BY sc_crid
 	HAVING COUNT(sc_stid) > 2
 GO
 
---¼ìË÷±íscore£¬²éÑ¯¿Î³ÌºÅ¡¢Ñ§ºÅ¡¢³É¼¨µÄÃ÷Ï¸²¢½øĞĞ»ã×ÜÉÏ¿ÎÈËÊıºÍÆ½¾ù³É¼¨
---COMPUTE(²éÑ¯Ã÷Ï¸)
+--æ£€ç´¢è¡¨scoreï¼ŒæŸ¥è¯¢è¯¾ç¨‹å·ã€å­¦å·ã€æˆç»©çš„æ˜ç»†å¹¶è¿›è¡Œæ±‡æ€»ä¸Šè¯¾äººæ•°å’Œå¹³å‡æˆç»©
+--COMPUTE(æŸ¥è¯¢æ˜ç»†)
 USE student
 GO
 SELECT * FROM score
 	COMPUTE COUNT(sc_stid), AVG(sc_grade)
 GO
 
---¼ìË÷±íscore£¬°´ÕÕ¿Î³ÌºÅ·Ö×é£¬²éÑ¯¸÷×éµÄ¿Î³ÌºÅ¡¢Ñ§ºÅ¡¢³É¼¨µÄÃ÷Ï¸ĞĞ²¢»ã×ÜÉÏ¿ÎÈËÊıºÍÆ½¾ù³É¼¨
+--æ£€ç´¢è¡¨scoreï¼ŒæŒ‰ç…§è¯¾ç¨‹å·åˆ†ç»„ï¼ŒæŸ¥è¯¢å„ç»„çš„è¯¾ç¨‹å·ã€å­¦å·ã€æˆç»©çš„æ˜ç»†è¡Œå¹¶æ±‡æ€»ä¸Šè¯¾äººæ•°å’Œå¹³å‡æˆç»©
 USE student
 GO
 SELECT * FROM score
@@ -678,16 +678,16 @@ SELECT * FROM score
 	COMPUTE COUNT(sc_stid), AVG(sc_grade) BY sc_crid
 GO
 
---¶Ô±ídeptºÍ±íclass½øĞĞ½»²æÁª½Ó£¬²éÑ¯Á½¸ö±íÖĞµÄËùÓĞÁĞ
---CROSS JOIN(½»²æÁª½Ó)
+--å¯¹è¡¨deptå’Œè¡¨classè¿›è¡Œäº¤å‰è”æ¥ï¼ŒæŸ¥è¯¢ä¸¤ä¸ªè¡¨ä¸­çš„æ‰€æœ‰åˆ—
+--CROSS JOIN(äº¤å‰è”æ¥)
 USE student
 GO
 SELECT dept.*, class.*
 FROM dept CROSS JOIN class
 GO
 
---¶Ô±íclassºÍ±ístudent½øĞĞµÈÖµÁª½Ó£¬²éÑ¯°üº¬Ñ§ÉúµÄ°à¼¶¼°ÆäÑ§ÉúĞÅÏ¢£¬¼´·µ»ØÁ½¸ö±íµÄËùÓĞÁĞ
---·½·¨1
+--å¯¹è¡¨classå’Œè¡¨studentè¿›è¡Œç­‰å€¼è”æ¥ï¼ŒæŸ¥è¯¢åŒ…å«å­¦ç”Ÿçš„ç­çº§åŠå…¶å­¦ç”Ÿä¿¡æ¯ï¼Œå³è¿”å›ä¸¤ä¸ªè¡¨çš„æ‰€æœ‰åˆ—
+--æ–¹æ³•1
 --JOIN
 USE student
 GO
@@ -695,8 +695,8 @@ SELECT * FROM class JOIN student
 ON class.cl_id = student.st_clid
 GO
 
---·½·¨2
---×ÔÈ»Áª½Ó²éÑ¯
+--æ–¹æ³•2
+--è‡ªç„¶è”æ¥æŸ¥è¯¢
 USE student
 GO
 SELECT class.* ,student.st_id ,student.st_name ,student.st_birth , student.st_gender ,student.st_address ,student.st_tel ,student.st_clid
@@ -705,7 +705,7 @@ ON class.cl_id = student.st_clid
 GO
 
 
---¶Ô±íclassºÍ±ístudent½øĞĞ×óÍâÁª½Ó£¬²éÑ¯Ã»ÓĞÑ§ÉúµÄ°à¼¶ĞÅÏ¢
+--å¯¹è¡¨classå’Œè¡¨studentè¿›è¡Œå·¦å¤–è”æ¥ï¼ŒæŸ¥è¯¢æ²¡æœ‰å­¦ç”Ÿçš„ç­çº§ä¿¡æ¯
 USE student
 GO
 SELECT class.* FROM class LEFT JOIN student
@@ -714,7 +714,7 @@ SELECT class.* FROM class LEFT JOIN student
 GO
 
 
---¶Ô±ístudent½øĞĞ×ÔÁª½Ó£¬²éÑ¯ÓëÑ§ºÅÎª'2005010101'ÔÚÍ¬Ò»¸ö°à¼¶µÄÑ§ÉúµÄÑ§ºÅºÍĞÕÃû
+--å¯¹è¡¨studentè¿›è¡Œè‡ªè”æ¥ï¼ŒæŸ¥è¯¢ä¸å­¦å·ä¸º'2005010101'åœ¨åŒä¸€ä¸ªç­çº§çš„å­¦ç”Ÿçš„å­¦å·å’Œå§“å
 USE student
 GO
 SELECT student2.st_id,student2.st_name
@@ -724,8 +724,8 @@ WHERE student1.st_id = '2005010101' AND student2.st_id <> '2005010101'
 GO
 
 
---¶Ô±ístudent¡¢±ícourse¡¢±íscore½øĞĞµÈÖµÁª½Ó£¬²éÑ¯Ñ§ÉúµÄĞÕÃû¡¢Ñ¡ĞŞµÄ¿Î³ÌÃûÒÔ¼°ËùÈ¡µÃµÄ³É¼¨
---·½·¨1
+--å¯¹è¡¨studentã€è¡¨courseã€è¡¨scoreè¿›è¡Œç­‰å€¼è”æ¥ï¼ŒæŸ¥è¯¢å­¦ç”Ÿçš„å§“åã€é€‰ä¿®çš„è¯¾ç¨‹åä»¥åŠæ‰€å–å¾—çš„æˆç»©
+--æ–¹æ³•1
 USE student
 GO
 SELECT student.st_name,course.cr_name,score.sc_grade
@@ -734,7 +734,7 @@ ON student.st_id = score.sc_stid
 JOIN course ON course.cr_id = score.sc_crid
 GO
 
---·½·¨2
+--æ–¹æ³•2
 USE student
 GO
 SELECT student.st_name,course.cr_name,score.sc_grade
@@ -743,17 +743,17 @@ WHERE student.st_id = score.sc_stid AND course.cr_id = score.sc_crid
 GO
 
 
---¶ÔÁ½¸öSELECTÓï¾ä½øĞĞÁªºÏ²éÑ¯¡£µÚÒ»¸ö²éÑ¯±ístudent£¬²éÑ¯Ñ§ÉúµÄÑ§ºÅ£¬ĞÕÃû£»µÚ¶ş¸ö²éÑ¯±íteacher£¬²éÑ¯½ÌÊ¦µÄ±àºÅ£¬ĞÕÃû
---·½·¨1
+--å¯¹ä¸¤ä¸ªSELECTè¯­å¥è¿›è¡Œè”åˆæŸ¥è¯¢ã€‚ç¬¬ä¸€ä¸ªæŸ¥è¯¢è¡¨studentï¼ŒæŸ¥è¯¢å­¦ç”Ÿçš„å­¦å·ï¼Œå§“åï¼›ç¬¬äºŒä¸ªæŸ¥è¯¢è¡¨teacherï¼ŒæŸ¥è¯¢æ•™å¸ˆçš„ç¼–å·ï¼Œå§“å
+--æ–¹æ³•1
 USE student
 GO
-SELECT st_id AS ÈËÔ±±àºÅ, st_name AS ÈËÔ±ĞÕÃû FROM student
+SELECT st_id AS äººå‘˜ç¼–å·, st_name AS äººå‘˜å§“å FROM student
 UNION
 SELECT th_id ,th_name FROM teacher
 ORDER BY st_name
 GO
 
---·½·¨2
+--æ–¹æ³•2
 USE student
 GO
 SELECT st_name
@@ -762,36 +762,38 @@ WHERE st_clid = (SELECT st_clid FROM student WHERE st_id = '2005010101') AND st_
 GO
 
 
---¼ìË÷±íclass£¬±ístudent£¬²éÑ¯°àÃûÎª'05ÍøÂç1°à'µÄÑ§ÉúµÄÏêÏ¸ĞÅÏ¢
---·½·¨1
+--æ£€ç´¢è¡¨classï¼Œè¡¨studentï¼ŒæŸ¥è¯¢ç­åä¸º'05ç½‘ç»œ1ç­'çš„å­¦ç”Ÿçš„è¯¦ç»†ä¿¡æ¯
+--æ–¹æ³•1
 USE student
 GO
 SELECT *
 FROM student
-WHERE st_clid = (SELECT cl_id FROM class WHERE cl_name = '05ÍøÂç1°à')
+WHERE st_clid = (SELECT cl_id FROM class WHERE cl_name = '05ç½‘ç»œ1ç­')
 GO
 
---·½·¨2
+--æ–¹æ³•2
 USE student
 GO
 SELECT *
 FROM student JOIN class
 ON student.st_clid = class.cl_id
-WHERE class.cl_name = '05ÍøÂç1°à'
+WHERE class.cl_name = '05ç½‘ç»œ1ç­'
 GO
 
 
---¼ìË÷±ístudent¡¢±íscore£¬²éÑ¯°àºÅÎª'01' µÄÑ§Éú³É¼¨µÄÏêÏ¸ĞÅÏ¢
---IN×Ó²éÑ¯
+--æ£€ç´¢è¡¨studentã€è¡¨scoreï¼ŒæŸ¥è¯¢ç­å·ä¸º'01' çš„å­¦ç”Ÿæˆç»©çš„è¯¦ç»†ä¿¡æ¯
+--INå­æŸ¥è¯¢
 USE student
 GO
 SELECT * FROM score
 WHERE sc_stid IN (SELECT st_id FROM student WHERE st_clid = '01')
 GO
 
---¼ìË÷±íclass¡¢±ístudent£¬ÅĞ¶ÏÊÇ·ñ´æÔÚ°üº¬Ñ§ÉúµÄ°à¼¶£¬Èç¹û²»´æÔÚ£¬Ôò·µ»Ø²»°üº¬Ñ§ÉúµÄ°à¼¶µÄÏêÏ¸ĞÅÏ¢
+
+--æ£€ç´¢è¡¨classã€è¡¨studentï¼Œåˆ¤æ–­æ˜¯å¦å­˜åœ¨åŒ…å«å­¦ç”Ÿçš„ç­çº§ï¼Œå¦‚æœä¸å­˜åœ¨ï¼Œåˆ™è¿”å›ä¸åŒ…å«å­¦ç”Ÿçš„ç­çº§çš„è¯¦ç»†ä¿¡æ¯
 USE student
 GO
 SELECT * FROM class
 WHERE NOT EXISTS (SELECT * FROM student WHERE student.st_clid = class.cl_id)
 GO
+
